@@ -5,22 +5,21 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-public class InputService {
+public class InputNumerosService {
 
-    private Scanner scanner;
+    private final Scanner scanner;
 
-    public InputService() {
+    public InputNumerosService() {
         scanner = new Scanner(System.in);
     }
 
     // Construtor feito para test
-    public InputService(Scanner scanner) {
+    public InputNumerosService(Scanner scanner) {
         this.scanner = scanner;
     }
 
 
     public List<Integer> obtemListaComNumerosInteirosNaoNegativosDigitados() {
-        scanner = new Scanner(System.in);
         System.out.println("Digite a quantidade de números que serão inseridos: ");
         int quantidadeDeInputs = obtemNumeroDigitadoValido(scanner);
         System.out.println("Digite os numeros que serão colocados para ordenação: ");

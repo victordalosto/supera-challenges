@@ -1,6 +1,6 @@
 package challenges.ch01;
 import java.util.List;
-import challenges.ch01.service.InputService;
+import challenges.ch01.service.InputNumerosService;
 import challenges.ch01.service.OrdenaListaService;
 
 /**  
@@ -13,13 +13,13 @@ import challenges.ch01.service.OrdenaListaService;
 public class Challenge01 {
 
     // Simulando injecao de dependencia!
-    static InputService inputDigitarService = new InputService();
+    static InputNumerosService inputNumerosService = new InputNumerosService();
     static OrdenaListaService ordenaListaService = new OrdenaListaService();
 
 
     public static void main(String[] args) {
         System.out.println("PRIMEIRO DESAFIO! - Ordenação de valores");
-        List<Integer> listaComNumerosInteirosNaoNegativos = inputDigitarService.obtemListaComNumerosInteirosNaoNegativosDigitados();
+        List<Integer> listaComNumerosInteirosNaoNegativos = inputNumerosService.obtemListaComNumerosInteirosNaoNegativosDigitados();
         List<Integer> listaOrdenadaComNumerosInteirosNaoNegativos = ordenaListaService.ordenaEmConjuntoDeParesEDeCrescimento(listaComNumerosInteirosNaoNegativos);
 
         System.out.println("\nLista com valores de entrada:");
