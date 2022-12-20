@@ -87,7 +87,7 @@ public class Challenge02Test {
 
     @Test
     void deveriaIgnorarInputMonetarioInvalido() {
-        String data = "a" + "\n-3"  + "\n!" + "\n" + "\n-22.5" + "\n1000000.0001"
+        String data = "a" + "\n!" + "\n" + "\n-22.5" + "\n1000000.0001"
                     + "\n1000000.000";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         InputMonetarioService inputServiceWithMock = new InputMonetarioService(new Scanner(System.in));
