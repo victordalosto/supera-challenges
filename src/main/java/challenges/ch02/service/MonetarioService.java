@@ -13,11 +13,12 @@ public class MonetarioService {
     private List<Monetario> monetarios = Arrays.asList(Monetario.values());
 
 
-    public List<Monetario> getListaComMonetarios(BigDecimal valor) {
+    public List<Monetario> getListaComMonetariosDeUmValor(BigDecimal valor) {
         List<Monetario> listaMonetariaDoValor = new ArrayList<>();
         BigDecimal soma = BigDecimal.ZERO;
         for (Monetario monetario : monetarios) {
-            Integer quantidade = getQuantidadeUnitariaMonetarioDeUmValor(monetario, valor.subtract(soma));
+            BigDecimal resto = valor.subtract(soma);
+            Integer quantidade = getQuantidadeUnitariaDeMonetarioDeUmValor(monetario, resto);
             for (int i=0; i<quantidade; i++) {
                 soma = soma.add(monetario.getValorMonetario());
                 listaMonetariaDoValor.add(monetario);
@@ -28,7 +29,7 @@ public class MonetarioService {
 
 
 
-    public Integer getQuantidadeUnitariaMonetarioDeUmValor(Monetario monetario, BigDecimal valor) {
+    public Integer getQuantidadeUnitariaDeMonetarioDeUmValor(Monetario monetario, BigDecimal valor) {
         BigDecimal soma = BigDecimal.ZERO;
         int quantidade = 0;
         while (soma.compareTo(valor) <= 0) {
@@ -50,7 +51,7 @@ public class MonetarioService {
                               .filter(f -> f.getValorMonetario().equals(monetario.getValorMonetario()) 
                                         && f.getTipoMonetario().equals(monetario.getTipoMonetario()))
                               .count();
-            if (!(tipoMonetario == monetario.getTipoMonetario())) {
+            if (tipoMonetario != monetario.getTipoMonetario()) {
                 tipoMonetario = monetario.getTipoMonetario();
                 sb.append(tipoMonetario.toString().toUpperCase() + "S:\n");
             }
@@ -58,7 +59,6 @@ public class MonetarioService {
         }
         System.out.println(sb);
         return sb.toString();
-
     }
     
 }

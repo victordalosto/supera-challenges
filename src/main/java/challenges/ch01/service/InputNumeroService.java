@@ -6,16 +6,16 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 
-public class InputNumerosService {
+public class InputNumeroService {
 
     private final Scanner scanner;
 
-    public InputNumerosService() {
+    public InputNumeroService() {
         scanner = new Scanner(System.in);
     }
 
     // Construtor feito para test
-    public InputNumerosService(Scanner scanner) {
+    public InputNumeroService(Scanner scanner) {
         this.scanner = scanner;
     }
 

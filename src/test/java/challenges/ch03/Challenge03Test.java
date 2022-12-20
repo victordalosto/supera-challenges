@@ -20,8 +20,8 @@ public class Challenge03Test {
 
     @Test
     void deveriaRealizarTestCompletoDesdeObterInputDoUsuarioAteImprimirValorNaTela() {
-        String data = "5" + "\n2" + "\n1" + "\n5" + "\n3" + "\n4" + "\n2";
-        System.setIn(new ByteArrayInputStream(data.getBytes()));
+        String mockInputsDigitados = "5" + "\n2" + "\n1" + "\n5" + "\n3" + "\n4" + "\n2";
+        System.setIn(new ByteArrayInputStream(mockInputsDigitados.getBytes()));
         InputProblemaService inputServiceWithMock = new InputProblemaService(new Scanner(System.in));
         ModeloProblema modeloProblema = inputServiceWithMock.getModeloDigitado();
         assertEquals(2, modeloProblema.getValorAlvo());
@@ -42,9 +42,9 @@ public class Challenge03Test {
 
 
     @Test
-    void deveriaRetornarUmModeloProblemaPorInputDigitado() {
-        String data = "4" + "\n1" + "\n1" + "\n2" + "\n3" + "\n4";
-        System.setIn(new ByteArrayInputStream(data.getBytes()));
+    void deveriaRetornarUmModeloProblemaDoInputDigitado() {
+        String mockInputsDigitados = "4" + "\n1" + "\n1" + "\n2" + "\n3" + "\n4";
+        System.setIn(new ByteArrayInputStream(mockInputsDigitados.getBytes()));
         InputProblemaService inputServiceWithMock = new InputProblemaService(new Scanner(System.in));
         ModeloProblema modeloProblema = inputServiceWithMock.getModeloDigitado();
         assertEquals(1, modeloProblema.getValorAlvo());
@@ -56,9 +56,9 @@ public class Challenge03Test {
 
     @Test
     void deveriaIgnorarAlgunsInputsDigitadosInvalidos() {
-        String data = "a" + "\n!" + "\n" + "\n-22.5" + "\n1000000.0001"
-                    + "\n4" + "\n1" + "\n1" + "\n2" + "\n3" + "\n4";
-        System.setIn(new ByteArrayInputStream(data.getBytes()));
+        String mockInputsDigitados = "a" + "\n!" + "\n" + "\n-22.5" + "\n1000000.0001"
+                                   + "\n4" + "\n1" + "\n1" + "\n2" + "\n3" + "\n4";
+        System.setIn(new ByteArrayInputStream(mockInputsDigitados.getBytes()));
         InputProblemaService inputServiceWithMock = new InputProblemaService(new Scanner(System.in));
         ModeloProblema modeloProblema = inputServiceWithMock.getModeloDigitado();
         assertEquals(1, modeloProblema.getValorAlvo());

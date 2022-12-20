@@ -1,6 +1,6 @@
 package challenges.ch01;
 import java.util.List;
-import challenges.ch01.service.InputNumerosService;
+import challenges.ch01.service.InputNumeroService;
 import challenges.ch01.service.OrdenaListaService;
 
 
@@ -14,18 +14,18 @@ import challenges.ch01.service.OrdenaListaService;
 public class Challenge01 {
 
     // Simulando injecao de dependencia!
-    static InputNumerosService inputNumerosService = new InputNumerosService();
+    static InputNumeroService inputNumeroService = new InputNumeroService();
     static OrdenaListaService ordenaListaService = new OrdenaListaService();
 
 
     public static void main(String[] args) {
         System.out.println("PRIMEIRO DESAFIO! - Ordenacao de valores");
-        List<Integer> listaComNumerosInteirosNaoNegativos = inputNumerosService.getListaComNumerosInteirosNaoNegativosDigitados();
-        List<Integer> listaOrdenadaComNumerosInteirosNaoNegativos = ordenaListaService.getListOrdenadaEmConjuntoDeParesEDeCrescimento(listaComNumerosInteirosNaoNegativos);
+        List<Integer> listaComNumerosDigitados = inputNumeroService.getListaComNumerosInteirosNaoNegativosDigitados();
+        List<Integer> listaComNUmerosDigitadosOrdenada = ordenaListaService.getListOrdenadaEmConjuntoDeParesEDeCrescimento(listaComNumerosDigitados);
 
         System.out.println("\nLista com valores de entrada:");
-        System.out.println(listaComNumerosInteirosNaoNegativos + ". Tamanho = " + listaComNumerosInteirosNaoNegativos.size());
+        System.out.println(listaComNumerosDigitados + ". Tamanho = " + listaComNumerosDigitados.size());
         System.out.println("\nLista com valores de saída ordenada:");
-        System.out.println(listaOrdenadaComNumerosInteirosNaoNegativos);
+        System.out.println(listaComNUmerosDigitadosOrdenada);
     }
 }

@@ -20,8 +20,8 @@ public class Challenge02 {
     
     public static void main(String[] args) {
         System.out.println("SEGUNDO DESAFIO! - Converte o valor em notas e moedas");
-        BigDecimal valorMonetario = inputMonetarioService.getMonetarioDigitadoValido();
-        List<Monetario> listaMonetariaDoValor = monetarioService.getListaComMonetarios(valorMonetario);
+        BigDecimal valorMonetarioDigitado = inputMonetarioService.getMonetarioDigitadoValido();
+        List<Monetario> listaMonetariaDoValor = monetarioService.getListaComMonetariosDeUmValor(valorMonetarioDigitado);
         monetarioService.printaListaMonetaria(listaMonetariaDoValor);
     }
 }

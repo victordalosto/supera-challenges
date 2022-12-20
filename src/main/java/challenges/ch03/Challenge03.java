@@ -17,7 +17,6 @@ public class Challenge03 {
     public static void main(String[] args) {
         System.out.println("TERCEIRO DESAFIO! - Numero de pares com a diferenca com valor igual ao alvo");
         ModeloProblema modeloProblema = inputProblemaService.getModeloDigitado();
-        // int solucao = numeroDeParesService.getQuantidade(modeloProblema);
         int solucao = modeloProblema.getQuantidadePares(numeroDeParesService);
         System.out.println(solucao);
     }
