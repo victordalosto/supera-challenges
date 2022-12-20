@@ -3,9 +3,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+
 public class OrdenaListaService {
 
-    public List<Integer> ordenaEmConjuntoDeParesEDeCrescimento(List<Integer> listaComNumeros) {
+    
+    public List<Integer> getListOrdenadaEmConjuntoDeParesEDeCrescimento(List<Integer> listaComNumeros) {
         List<Integer> numerosPares = new ArrayList<>();
         List<Integer> numerosImpares = new ArrayList<>();
         for (Integer numero : listaComNumeros) {
@@ -14,7 +16,7 @@ public class OrdenaListaService {
             else
                 numerosImpares.add(numero);
         }
-        List<Integer> listaOrdenada = listaOrdenadaComParesEmOrdemCrescenteEDepoisImparesEmOrdemDecrescente(numerosPares, numerosImpares);
+        List<Integer> listaOrdenada = ordenaListaComParesEmOrdemCrescenteEDepoisImparesEmOrdemDecrescente(numerosPares, numerosImpares);
         return Collections.unmodifiableList(listaOrdenada);
     }
 
@@ -28,10 +30,10 @@ public class OrdenaListaService {
 
 
 
-    private List<Integer> listaOrdenadaComParesEmOrdemCrescenteEDepoisImparesEmOrdemDecrescente(List<Integer> numerosPares, List<Integer> numerosImpares) {
+    private List<Integer> ordenaListaComParesEmOrdemCrescenteEDepoisImparesEmOrdemDecrescente(List<Integer> numerosPares, List<Integer> numerosImpares) {
         Collections.sort(numerosPares);
         Collections.sort(numerosImpares, Collections.reverseOrder());
-        List<Integer> listaOrdenada = new ArrayList<>(numerosImpares.size() + numerosPares.size());
+        List<Integer> listaOrdenada = new ArrayList<>(numerosPares.size() + numerosImpares.size());
         listaOrdenada.addAll(numerosPares);
         listaOrdenada.addAll(numerosImpares);
         return listaOrdenada;
