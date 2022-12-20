@@ -10,9 +10,8 @@ import challenges.ch03.service.NumeroDeParesService;
 
 
 /**
- * Dado um array de inteiros e um valor alvo, determine o número de pares entre
+ * Dado um array de inteiros e um valor alvo, determine o numero de pares entre
  * os elementos do array em que a sua diferença seja igual ao valor alvo.
- * .
  */
 public class Challenge03Test {
 

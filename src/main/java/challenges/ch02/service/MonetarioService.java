@@ -7,16 +7,17 @@ import java.util.List;
 import challenges.ch02.model.Monetario;
 import challenges.ch02.model.TipoMonetario;
 
+
 public class MonetarioService {
 
     private List<Monetario> monetarios = Arrays.asList(Monetario.values());
 
 
-    public List<Monetario> obtemListaComMonetarios(BigDecimal valor) {
+    public List<Monetario> getListaComMonetarios(BigDecimal valor) {
         List<Monetario> listaMonetariaDoValor = new ArrayList<>();
         BigDecimal soma = BigDecimal.ZERO;
         for (Monetario monetario : monetarios) {
-            Integer quantidade = quantidadeUnitariaMonetarioDeUmValor(monetario, valor.subtract(soma));
+            Integer quantidade = getQuantidadeUnitariaMonetarioDeUmValor(monetario, valor.subtract(soma));
             for (int i=0; i<quantidade; i++) {
                 soma = soma.add(monetario.getValorMonetario());
                 listaMonetariaDoValor.add(monetario);
@@ -27,7 +28,7 @@ public class MonetarioService {
 
 
 
-    public Integer quantidadeUnitariaMonetarioDeUmValor(Monetario monetario, BigDecimal valor) {
+    public Integer getQuantidadeUnitariaMonetarioDeUmValor(Monetario monetario, BigDecimal valor) {
         BigDecimal soma = BigDecimal.ZERO;
         int quantidade = 0;
         while (soma.compareTo(valor) <= 0) {

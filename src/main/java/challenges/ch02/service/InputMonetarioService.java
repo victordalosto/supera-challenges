@@ -4,10 +4,10 @@ import java.util.Locale;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+
 public class InputMonetarioService {
 
     private final Scanner scanner;
-
 
     public InputMonetarioService() {
         scanner = new Scanner(System.in).useLocale(Locale.ENGLISH);
@@ -17,8 +17,9 @@ public class InputMonetarioService {
         this.scanner = scanner.useLocale(Locale.ENGLISH);
     }
 
+    
 
-    public BigDecimal obtemMonetarioDigitadoValido() {
+    public BigDecimal getMonetarioDigitadoValido() {
         try {
             BigDecimal numeroDigitado = scanner.nextBigDecimal();
             if (!ehUmValorMonetarioValido(numeroDigitado))
@@ -26,10 +27,9 @@ public class InputMonetarioService {
             return numeroDigitado;
         } catch (NoSuchElementException e) {
             scanner.nextLine();
-            return obtemMonetarioDigitadoValido();
+            return getMonetarioDigitadoValido();
         } 
     }
-
 
 
     

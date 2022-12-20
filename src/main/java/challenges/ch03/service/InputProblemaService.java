@@ -5,6 +5,7 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 import challenges.ch03.model.ModeloProblema;
 
+
 public class InputProblemaService {
 
     private final Scanner scanner;
@@ -18,13 +19,14 @@ public class InputProblemaService {
         this.scanner = scanner;
     }
 
+    
 
     public ModeloProblema getModeloDigitado() {
         System.out.println("Digite o tamanho do array desejado: ");
         int tamanhoArr = getInteiroDigitado(scanner);
         System.out.println("Digite o valor alvo para encontrar pares: ");
         int valorAlvo = getInteiroDigitado(scanner);
-        System.out.println("Digite os numeros que serão colocados no Array para a busca: ");
+        System.out.println("Digite os numeros que serao colocados no Array para a busca: ");
         int [] array = getArrayInteirosDigitado(tamanhoArr, scanner);
         return ModeloProblema.builder().valorAlvo(valorAlvo).arr(array).build();
     }
@@ -35,7 +37,7 @@ public class InputProblemaService {
         try {
             return scanner.nextInt();
         } catch (NoSuchElementException e) {
-            System.out.println(" #Valor inteiro Invalido! Valor deve ser um número inteiro");
+            System.out.println(" #Valor inteiro Invalido! Valor deve ser um numero inteiro");
             scanner.nextLine();
             return getInteiroDigitado(scanner);
         } 
@@ -46,7 +48,7 @@ public class InputProblemaService {
     private int [] getArrayInteirosDigitado(Integer quantidadeDeInputs, Scanner scanner) {
         List<Integer> list = new ArrayList<>(quantidadeDeInputs);
         for (int loopAtual = 1 ; loopAtual <=quantidadeDeInputs; loopAtual++) {
-            System.out.println("("+loopAtual+"/"+quantidadeDeInputs+") Digite um número: ");
+            System.out.println("("+loopAtual+"/"+quantidadeDeInputs+") Digite um numero: ");
             Integer numeroDigitado = getInteiroDigitado(scanner);
             list.add(numeroDigitado);
         }

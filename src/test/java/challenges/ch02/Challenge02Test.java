@@ -15,10 +15,10 @@ import challenges.ch02.service.MonetarioService;
 
 
 /**
- * Leia um valor de ponto flutuante com duas casas decimais. Este valor representa um valor monetário. 
- * A seguir, calcule o menor número de notas e moedas possíveis no qual o valor pode ser decomposto. 
- * As notas consideradas são de 100, 50, 20, 10, 5, 2. 
- * As moedas possíveis são de 1, 0.50, 0.25, 0.10, 0.05 e 0.01.
+ * Leia um valor de ponto flutuante com duas casas decimais. Este valor representa um valor monetario. 
+ * A seguir, calcule o menor numero de notas e moedas possíveis no qual o valor pode ser decomposto. 
+ * As notas consideradas sao de 100, 50, 20, 10, 5, 2. 
+ * As moedas possíveis sao de 1, 0.50, 0.25, 0.10, 0.05 e 0.01.
  */
 public class Challenge02Test {
 
@@ -31,9 +31,9 @@ public class Challenge02Test {
         String data = "576.73";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         InputMonetarioService inputServiceWithMock = new InputMonetarioService(new Scanner(System.in));
-        BigDecimal monetarioObtido = inputServiceWithMock.obtemMonetarioDigitadoValido();
+        BigDecimal monetarioObtido = inputServiceWithMock.getMonetarioDigitadoValido();
         assertEquals(new BigDecimal("576.73"), monetarioObtido);
-        List<Monetario> listaComMonetario = monetarioService.obtemListaComMonetarios(monetarioObtido);
+        List<Monetario> listaComMonetario = monetarioService.getListaComMonetarios(monetarioObtido);
         assertEquals(new BigDecimal("576.73"), listaComMonetario.stream().map(Monetario::getValorMonetario).reduce(BigDecimal.ZERO, BigDecimal::add));
         String textoOutput = monetarioService.printaListaMonetaria(listaComMonetario);
         assertTrue(textoOutput.contains("NOTAS:"));
@@ -57,7 +57,7 @@ public class Challenge02Test {
     @Test
     void deveriaRetornarListaContendoSomaCorretaDoMonetario() {
         BigDecimal mockBigDecimal = new BigDecimal("565896.13");
-        List<Monetario> obtemListaComMonetarios = monetarioService.obtemListaComMonetarios(mockBigDecimal);
+        List<Monetario> obtemListaComMonetarios = monetarioService.getListaComMonetarios(mockBigDecimal);
         assertEquals(mockBigDecimal, obtemListaComMonetarios.stream().map(Monetario::getValorMonetario).reduce(BigDecimal.ZERO, BigDecimal::add));
     }
 
@@ -66,7 +66,7 @@ public class Challenge02Test {
     @Test
     void deveriaRetornarListaContendoUmaUnicaUnidadeDeCadaMonetario() {
         BigDecimal mockBigDecimal = new BigDecimal("188.91");
-        List<Monetario> obtemListaComMonetarios = monetarioService.obtemListaComMonetarios(mockBigDecimal);
+        List<Monetario> obtemListaComMonetarios = monetarioService.getListaComMonetarios(mockBigDecimal);
         for (Monetario monetario : Monetario.values()) {
             int quantidadeDeMonetario = obtemListaComMonetarios.stream().filter(f -> f.getValorMonetario() == monetario.getValorMonetario()).toList().size();
             assertEquals(1, quantidadeDeMonetario);
@@ -80,7 +80,7 @@ public class Challenge02Test {
         String data = "1594.75";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         InputMonetarioService inputServiceWithMock = new InputMonetarioService(new Scanner(System.in));
-        assertEquals(new BigDecimal(1594.75), inputServiceWithMock.obtemMonetarioDigitadoValido());
+        assertEquals(new BigDecimal(1594.75), inputServiceWithMock.getMonetarioDigitadoValido());
     }
 
 
@@ -91,7 +91,7 @@ public class Challenge02Test {
                     + "\n1000000.000";
         System.setIn(new ByteArrayInputStream(data.getBytes()));
         InputMonetarioService inputServiceWithMock = new InputMonetarioService(new Scanner(System.in));
-        assertEquals(new BigDecimal("1000000.000"), inputServiceWithMock.obtemMonetarioDigitadoValido());
+        assertEquals(new BigDecimal("1000000.000"), inputServiceWithMock.getMonetarioDigitadoValido());
 
     }
 
@@ -100,7 +100,7 @@ public class Challenge02Test {
     @Test
     void deveriaImprimirQuantidadeMonetariaNaTela() {
         BigDecimal mockBigDecimal = new BigDecimal("201.11");
-        List<Monetario> obtemListaComMonetarios = monetarioService.obtemListaComMonetarios(mockBigDecimal);
+        List<Monetario> obtemListaComMonetarios = monetarioService.getListaComMonetarios(mockBigDecimal);
         String textOutput = monetarioService.printaListaMonetaria(obtemListaComMonetarios);
         System.out.println(textOutput);
         assertTrue(textOutput.contains("2	nota(s) de R$ 100.00"));
@@ -114,12 +114,12 @@ public class Challenge02Test {
 
     @Test
     void deveriaRetornaQuantidadeUnitariaCertaDeMonetariosDoTipoMoeda() {
-        assertEquals(36, monetarioService.quantidadeUnitariaMonetarioDeUmValor(Monetario.UM, new BigDecimal("36")));
-        assertEquals(51, monetarioService.quantidadeUnitariaMonetarioDeUmValor(Monetario.ZERO_CINQUENTA, new BigDecimal("25.50")));
-        assertEquals(91, monetarioService.quantidadeUnitariaMonetarioDeUmValor(Monetario.ZERO_VINTEECINCO, new BigDecimal("22.75")));
-        assertEquals(83, monetarioService.quantidadeUnitariaMonetarioDeUmValor(Monetario.ZERO_DEZ, new BigDecimal("8.30")));
-        assertEquals(79, monetarioService.quantidadeUnitariaMonetarioDeUmValor(Monetario.ZERO_ZEROCINCO, new BigDecimal("3.95")));
-        assertEquals(97, monetarioService.quantidadeUnitariaMonetarioDeUmValor(Monetario.ZERO_ZEROUM, new BigDecimal("0.97")));
+        assertEquals(36, monetarioService.getQuantidadeUnitariaMonetarioDeUmValor(Monetario.UM, new BigDecimal("36")));
+        assertEquals(51, monetarioService.getQuantidadeUnitariaMonetarioDeUmValor(Monetario.ZERO_CINQUENTA, new BigDecimal("25.50")));
+        assertEquals(91, monetarioService.getQuantidadeUnitariaMonetarioDeUmValor(Monetario.ZERO_VINTEECINCO, new BigDecimal("22.75")));
+        assertEquals(83, monetarioService.getQuantidadeUnitariaMonetarioDeUmValor(Monetario.ZERO_DEZ, new BigDecimal("8.30")));
+        assertEquals(79, monetarioService.getQuantidadeUnitariaMonetarioDeUmValor(Monetario.ZERO_ZEROCINCO, new BigDecimal("3.95")));
+        assertEquals(97, monetarioService.getQuantidadeUnitariaMonetarioDeUmValor(Monetario.ZERO_ZEROUM, new BigDecimal("0.97")));
         assertEquals(6, Arrays.asList(Monetario.values()).stream().filter(p -> p.getTipoMonetario().equals(TipoMonetario.MOEDA)).toList().size());
     }
 
@@ -127,12 +127,12 @@ public class Challenge02Test {
 
     @Test
     void deveriaRetornaQuantidadeUnitariaCertaDeMonetariosDoTipoNota() {
-        assertEquals(12, monetarioService.quantidadeUnitariaMonetarioDeUmValor(Monetario.CEM, new BigDecimal("1200.0")));
-        assertEquals(35, monetarioService.quantidadeUnitariaMonetarioDeUmValor(Monetario.CINQUENTA, new BigDecimal("1750.0")));
-        assertEquals(13, monetarioService.quantidadeUnitariaMonetarioDeUmValor(Monetario.VINTE, new BigDecimal("260.0")));
-        assertEquals(110, monetarioService.quantidadeUnitariaMonetarioDeUmValor(Monetario.DEZ, new BigDecimal("1100.0")));
-        assertEquals(125, monetarioService.quantidadeUnitariaMonetarioDeUmValor(Monetario.CINCO, new BigDecimal("625.0")));
-        assertEquals(440, monetarioService.quantidadeUnitariaMonetarioDeUmValor(Monetario.DOIS, new BigDecimal("880")));
+        assertEquals(12, monetarioService.getQuantidadeUnitariaMonetarioDeUmValor(Monetario.CEM, new BigDecimal("1200.0")));
+        assertEquals(35, monetarioService.getQuantidadeUnitariaMonetarioDeUmValor(Monetario.CINQUENTA, new BigDecimal("1750.0")));
+        assertEquals(13, monetarioService.getQuantidadeUnitariaMonetarioDeUmValor(Monetario.VINTE, new BigDecimal("260.0")));
+        assertEquals(110, monetarioService.getQuantidadeUnitariaMonetarioDeUmValor(Monetario.DEZ, new BigDecimal("1100.0")));
+        assertEquals(125, monetarioService.getQuantidadeUnitariaMonetarioDeUmValor(Monetario.CINCO, new BigDecimal("625.0")));
+        assertEquals(440, monetarioService.getQuantidadeUnitariaMonetarioDeUmValor(Monetario.DOIS, new BigDecimal("880")));
         assertEquals(6, Arrays.asList(Monetario.values()).stream().filter(p -> p.getTipoMonetario().equals(TipoMonetario.NOTA)).toList().size());
     }
     
