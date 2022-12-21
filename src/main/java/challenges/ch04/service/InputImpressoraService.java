@@ -76,8 +76,12 @@ public class InputImpressoraService {
         Integer quantidade = texto.length();
         if (!texto.toUpperCase().equals(texto))
             return false;
-        if (quantidade <2 || quantidade > 100)
+        if (quantidade<2 || quantidade>=100)
             return false;
+        for (int i=0; i<texto.length(); i++) {
+            if (!Character.isAlphabetic(texto.charAt(i)) && texto.charAt(i) != ' ')
+                return false;
+        }
         return true;
     }
     
