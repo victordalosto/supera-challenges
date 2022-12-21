@@ -5,8 +5,8 @@ import challenges.ch03.model.ModeloProblema;
 public class NumeroDeParesService {
 
 
-    public int getQuantidade(ModeloProblema modeloProblema) {
-        int[] arr = modeloProblema.getArr();
+    public int getQuantidadeDeParesNoArrayDoModelo(ModeloProblema modeloProblema) {
+        int[] arr = modeloProblema.getArray();
         int quantidade = 0;
         for (int i=0; i<arr.length-1; i++) {
             for (int j=i+1; j<arr.length; j++) {

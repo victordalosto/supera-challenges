@@ -6,10 +6,10 @@ import challenges.ch01.service.OrdenaListaService;
 
 /**  
 * PRIMEIRO DESAFIO
-* Considerando a entrada de valores inteiros nao negativos, ordene estes valores segundo o seguinte critério:
+* Considerando a entrada de valores inteiros nao negativos, ordene estes valores segundo o seguinte criterio:
 *   • Primeiro os Pares
-*   • Depois os Ímpares
-* Sendo que deverao ser apresentados os pares em ordem crescente e depois os ímpares em ordem decrescente.
+*   • Depois os impares
+* Sendo que deverao ser apresentados os pares em ordem crescente e depois os impares em ordem decrescente.
 */
 public class Challenge01 {
 
@@ -21,11 +21,12 @@ public class Challenge01 {
     public static void main(String[] args) {
         System.out.println("PRIMEIRO DESAFIO! - Ordenacao de valores");
         List<Integer> listaComNumerosDigitados = inputNumeroService.getListaComNumerosInteirosNaoNegativosDigitados();
-        List<Integer> listaComNUmerosDigitadosOrdenada = ordenaListaService.getListOrdenadaEmConjuntoDeParesEDeCrescimento(listaComNumerosDigitados);
+        List<Integer> listaComNumerosDigitadosOrdenado = ordenaListaService.getListaOrdenadaEmConjuntoDeParesEDeCrescimento(listaComNumerosDigitados);
 
-        System.out.println("\nLista com valores de entrada:");
+        System.out.println("\nValores de entrada: ");
         System.out.println(listaComNumerosDigitados + ". Tamanho = " + listaComNumerosDigitados.size());
-        System.out.println("\nLista com valores de saída ordenada:");
-        System.out.println(listaComNUmerosDigitadosOrdenada);
+        System.out.println("\nValores de saida ordenada: ");
+        System.out.println(listaComNumerosDigitadosOrdenado);
     }
+
 }

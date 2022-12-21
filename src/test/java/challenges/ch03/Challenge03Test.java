@@ -11,7 +11,7 @@ import challenges.ch03.service.NumeroDeParesService;
 
 /**
  * Dado um array de inteiros e um valor alvo, determine o numero de pares entre
- * os elementos do array em que a sua diferença seja igual ao valor alvo.
+ * os elementos do array em que a sua diferenca seja igual ao valor alvo.
  */
 public class Challenge03Test {
 
@@ -23,11 +23,11 @@ public class Challenge03Test {
         String mockInputsDigitados = "5" + "\n2" + "\n1" + "\n5" + "\n3" + "\n4" + "\n2";
         System.setIn(new ByteArrayInputStream(mockInputsDigitados.getBytes()));
         InputProblemaService inputServiceWithMock = new InputProblemaService(new Scanner(System.in));
-        ModeloProblema modeloProblema = inputServiceWithMock.getModeloDigitado();
+        ModeloProblema modeloProblema = inputServiceWithMock.getModeloProblemaDigitado();
         assertEquals(2, modeloProblema.getValorAlvo());
-        assertEquals(5, modeloProblema.getArr().length);
-        assertArrayEquals(new int [] {1, 5, 3, 4, 2}, modeloProblema.getArr());
-        int quantidade = numeroDeParesService.getQuantidade(modeloProblema);
+        assertEquals(5, modeloProblema.getArray().length);
+        assertArrayEquals(new int [] {1, 5, 3, 4, 2}, modeloProblema.getArray());
+        int quantidade = numeroDeParesService.getQuantidadeDeParesNoArrayDoModelo(modeloProblema);
         assertEquals(3, quantidade);
     }
 
@@ -35,8 +35,8 @@ public class Challenge03Test {
 
     @Test
     void deveriaRetornarASolucaoCorretaDoProblema() {
-        ModeloProblema mockModeloProblema = ModeloProblema.builder().valorAlvo(1).arr(new int[] {1, 2, 3, 4}).build();
-        assertEquals(3, numeroDeParesService.getQuantidade(mockModeloProblema));
+        ModeloProblema mockModeloProblema = ModeloProblema.builder().valorAlvo(1).array(new int[] {1, 2, 3, 4}).build();
+        assertEquals(3, numeroDeParesService.getQuantidadeDeParesNoArrayDoModelo(mockModeloProblema));
     }
     
 
@@ -46,10 +46,10 @@ public class Challenge03Test {
         String mockInputsDigitados = "4" + "\n1" + "\n1" + "\n2" + "\n3" + "\n4";
         System.setIn(new ByteArrayInputStream(mockInputsDigitados.getBytes()));
         InputProblemaService inputServiceWithMock = new InputProblemaService(new Scanner(System.in));
-        ModeloProblema modeloProblema = inputServiceWithMock.getModeloDigitado();
+        ModeloProblema modeloProblema = inputServiceWithMock.getModeloProblemaDigitado();
         assertEquals(1, modeloProblema.getValorAlvo());
-        assertEquals(4, modeloProblema.getArr().length);
-        assertArrayEquals(new int [] {1, 2, 3, 4}, modeloProblema.getArr());
+        assertEquals(4, modeloProblema.getArray().length);
+        assertArrayEquals(new int [] {1, 2, 3, 4}, modeloProblema.getArray());
     }
     
 
@@ -60,9 +60,9 @@ public class Challenge03Test {
                                    + "\n4" + "\n1" + "\n1" + "\n2" + "\n3" + "\n4";
         System.setIn(new ByteArrayInputStream(mockInputsDigitados.getBytes()));
         InputProblemaService inputServiceWithMock = new InputProblemaService(new Scanner(System.in));
-        ModeloProblema modeloProblema = inputServiceWithMock.getModeloDigitado();
+        ModeloProblema modeloProblema = inputServiceWithMock.getModeloProblemaDigitado();
         assertEquals(1, modeloProblema.getValorAlvo());
-        assertEquals(4, modeloProblema.getArr().length);
-        assertArrayEquals(new int [] {1, 2, 3, 4}, modeloProblema.getArr());
+        assertEquals(4, modeloProblema.getArray().length);
+        assertArrayEquals(new int [] {1, 2, 3, 4}, modeloProblema.getArray());
     }
 }

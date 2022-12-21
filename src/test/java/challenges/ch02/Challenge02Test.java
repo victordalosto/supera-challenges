@@ -15,9 +15,9 @@ import challenges.ch02.service.MonetarioService;
 
 /**
  * Leia um valor de ponto flutuante com duas casas decimais. Este valor representa um valor monetario. 
- * A seguir, calcule o menor numero de notas e moedas possíveis no qual o valor pode ser decomposto. 
+ * A seguir, calcule o menor numero de notas e moedas possiveis no qual o valor pode ser decomposto. 
  * As notas consideradas sao de 100, 50, 20, 10, 5, 2. 
- * As moedas possíveis sao de 1, 0.50, 0.25, 0.10, 0.05 e 0.01.
+ * As moedas possiveis sao de 1, 0.50, 0.25, 0.10, 0.05 e 0.01.
  */
 public class Challenge02Test {
 
@@ -112,12 +112,12 @@ public class Challenge02Test {
 
     @Test
     void deveriaRetornaQuantidadeUnitariaCertaDeMonetariosDoTipoMoeda() {
-        assertEquals(36, monetarioService.getQuantidadeUnitariaDeMonetarioDeUmValor(Monetario.UM, new BigDecimal("36")));
-        assertEquals(51, monetarioService.getQuantidadeUnitariaDeMonetarioDeUmValor(Monetario.ZERO_CINQUENTA, new BigDecimal("25.50")));
-        assertEquals(91, monetarioService.getQuantidadeUnitariaDeMonetarioDeUmValor(Monetario.ZERO_VINTEECINCO, new BigDecimal("22.75")));
-        assertEquals(83, monetarioService.getQuantidadeUnitariaDeMonetarioDeUmValor(Monetario.ZERO_DEZ, new BigDecimal("8.30")));
-        assertEquals(79, monetarioService.getQuantidadeUnitariaDeMonetarioDeUmValor(Monetario.ZERO_ZEROCINCO, new BigDecimal("3.95")));
-        assertEquals(97, monetarioService.getQuantidadeUnitariaDeMonetarioDeUmValor(Monetario.ZERO_ZEROUM, new BigDecimal("0.97")));
+        assertEquals(36, monetarioService.getMaximaQuantidadeUnitariaDeMonetarioDeUmValor(Monetario.UM, new BigDecimal("36")));
+        assertEquals(51, monetarioService.getMaximaQuantidadeUnitariaDeMonetarioDeUmValor(Monetario.ZERO_CINQUENTA, new BigDecimal("25.50")));
+        assertEquals(91, monetarioService.getMaximaQuantidadeUnitariaDeMonetarioDeUmValor(Monetario.ZERO_VINTEECINCO, new BigDecimal("22.75")));
+        assertEquals(83, monetarioService.getMaximaQuantidadeUnitariaDeMonetarioDeUmValor(Monetario.ZERO_DEZ, new BigDecimal("8.30")));
+        assertEquals(79, monetarioService.getMaximaQuantidadeUnitariaDeMonetarioDeUmValor(Monetario.ZERO_ZEROCINCO, new BigDecimal("3.95")));
+        assertEquals(97, monetarioService.getMaximaQuantidadeUnitariaDeMonetarioDeUmValor(Monetario.ZERO_ZEROUM, new BigDecimal("0.97")));
         assertEquals(6, Arrays.asList(Monetario.values()).stream().filter(p -> p.getTipoMonetario().equals(TipoMonetario.MOEDA)).toList().size());
     }
 
@@ -125,12 +125,12 @@ public class Challenge02Test {
 
     @Test
     void deveriaRetornaQuantidadeUnitariaCertaDeMonetariosDoTipoNota() {
-        assertEquals(12, monetarioService.getQuantidadeUnitariaDeMonetarioDeUmValor(Monetario.CEM, new BigDecimal("1200.0")));
-        assertEquals(35, monetarioService.getQuantidadeUnitariaDeMonetarioDeUmValor(Monetario.CINQUENTA, new BigDecimal("1750.0")));
-        assertEquals(13, monetarioService.getQuantidadeUnitariaDeMonetarioDeUmValor(Monetario.VINTE, new BigDecimal("260.0")));
-        assertEquals(110, monetarioService.getQuantidadeUnitariaDeMonetarioDeUmValor(Monetario.DEZ, new BigDecimal("1100.0")));
-        assertEquals(125, monetarioService.getQuantidadeUnitariaDeMonetarioDeUmValor(Monetario.CINCO, new BigDecimal("625.0")));
-        assertEquals(440, monetarioService.getQuantidadeUnitariaDeMonetarioDeUmValor(Monetario.DOIS, new BigDecimal("880")));
+        assertEquals(12, monetarioService.getMaximaQuantidadeUnitariaDeMonetarioDeUmValor(Monetario.CEM, new BigDecimal("1200.0")));
+        assertEquals(35, monetarioService.getMaximaQuantidadeUnitariaDeMonetarioDeUmValor(Monetario.CINQUENTA, new BigDecimal("1750.0")));
+        assertEquals(13, monetarioService.getMaximaQuantidadeUnitariaDeMonetarioDeUmValor(Monetario.VINTE, new BigDecimal("260.0")));
+        assertEquals(110, monetarioService.getMaximaQuantidadeUnitariaDeMonetarioDeUmValor(Monetario.DEZ, new BigDecimal("1100.0")));
+        assertEquals(125, monetarioService.getMaximaQuantidadeUnitariaDeMonetarioDeUmValor(Monetario.CINCO, new BigDecimal("625.0")));
+        assertEquals(440, monetarioService.getMaximaQuantidadeUnitariaDeMonetarioDeUmValor(Monetario.DOIS, new BigDecimal("880")));
         assertEquals(6, Arrays.asList(Monetario.values()).stream().filter(p -> p.getTipoMonetario().equals(TipoMonetario.NOTA)).toList().size());
     }
     
