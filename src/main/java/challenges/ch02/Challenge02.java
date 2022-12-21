@@ -8,9 +8,9 @@ import challenges.ch02.service.InputMonetarioService;
 
 /**
  * Leia um valor de ponto flutuante com duas casas decimais. Este valor representa um valor monetario. 
- * A seguir, calcule o menor numero de notas e moedas possíveis no qual o valor pode ser decomposto. 
+ * A seguir, calcule o menor numero de notas e moedas possiveis no qual o valor pode ser decomposto. 
  * As notas consideradas sao de 100, 50, 20, 10, 5, 2. 
- * As moedas possíveis sao de 1, 0.50, 0.25, 0.10, 0.05 e 0.01.
+ * As moedas possiveis sao de 1, 0.50, 0.25, 0.10, 0.05 e 0.01.
  */
 public class Challenge02 {
 

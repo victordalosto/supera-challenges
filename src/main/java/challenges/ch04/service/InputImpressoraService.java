@@ -13,7 +13,6 @@ public class InputImpressoraService {
         scanner = new Scanner(System.in);
     }
 
-    // Construtor feito para test
     public InputImpressoraService(Scanner scanner) {
         this.scanner = scanner;
     }
@@ -23,7 +22,7 @@ public class InputImpressoraService {
     public List<String> getListaComTextosDigitados() {
         System.out.println("Digite a quantidade de numeros que serao inseridos: ");
         int quantidadeDeInputs = getNumeroDigitadoValido();
-        System.out.println("Digite as palavras impressas na impressora: ");
+        System.out.println("Digite as frases a serem impressas na impressora: ");
         List<String> listaComTextosDigitados = getListaComTextosDigitados(quantidadeDeInputs);
         return listaComTextosDigitados;
     }
@@ -52,7 +51,7 @@ public class InputImpressoraService {
                 throw new NoSuchElementException();
             return textoDigitado;
         } catch (NoSuchElementException e) {
-            System.out.println(" #Valor digitado deve ser texto com no mínimo 2 e no máximo 100 caracteres de letras maiúsculas\n");
+            System.out.println(" #Valor digitado deve ser texto com no minimo 2 e no maximo 100 caracteres de letras maiusculas\n");
             return getTextoDigitado();
         } 
     }
@@ -61,7 +60,7 @@ public class InputImpressoraService {
 
     private List<String> getListaComTextosDigitados(Integer quantidadeDeInputs) {
         List<String> lista = new ArrayList<>(quantidadeDeInputs);
-        scanner.nextLine();
+        scanner.nextLine(); // acrescentado pois o ultimo scanner era do tipo Int
         for (int loopAtual = 1 ; loopAtual <=quantidadeDeInputs; loopAtual++) {
             System.out.println("("+loopAtual+"/"+quantidadeDeInputs+") Digite um texto: ");
             String textoDigitado = getTextoDigitado();

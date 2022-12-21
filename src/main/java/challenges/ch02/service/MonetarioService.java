@@ -10,26 +10,26 @@ import challenges.ch02.model.TipoMonetario;
 
 public class MonetarioService {
 
-    private List<Monetario> monetarios = Arrays.asList(Monetario.values());
+    private List<Monetario> listPossiveisMonetarios = Arrays.asList(Monetario.values());
 
 
     public List<Monetario> getListaComMonetariosDeUmValor(BigDecimal valor) {
-        List<Monetario> listaMonetariaDoValor = new ArrayList<>();
+        List<Monetario> listMonetariaDoValor = new ArrayList<>();
         BigDecimal soma = BigDecimal.ZERO;
-        for (Monetario monetario : monetarios) {
+        for (Monetario monetario : listPossiveisMonetarios) {
             BigDecimal resto = valor.subtract(soma);
-            Integer quantidade = getQuantidadeUnitariaDeMonetarioDeUmValor(monetario, resto);
+            Integer quantidade = getMaximaQuantidadeUnitariaDeMonetarioDeUmValor(monetario, resto);
             for (int i=0; i<quantidade; i++) {
                 soma = soma.add(monetario.getValorMonetario());
-                listaMonetariaDoValor.add(monetario);
+                listMonetariaDoValor.add(monetario);
             }
         }
-        return Collections.unmodifiableList(listaMonetariaDoValor);
+        return Collections.unmodifiableList(listMonetariaDoValor);
     }
 
 
 
-    public Integer getQuantidadeUnitariaDeMonetarioDeUmValor(Monetario monetario, BigDecimal valor) {
+    public Integer getMaximaQuantidadeUnitariaDeMonetarioDeUmValor(Monetario monetario, BigDecimal valor) {
         BigDecimal soma = BigDecimal.ZERO;
         int quantidade = 0;
         while (soma.compareTo(valor) <= 0) {
@@ -44,21 +44,21 @@ public class MonetarioService {
 
 
     public String printaListaMonetaria(List<Monetario> lista) {
-        TipoMonetario tipoMonetario = null;
+        TipoMonetario tipoMonetarioAtualDoLoop = null;
         StringBuffer sb = new StringBuffer();
-        for (Monetario monetario : monetarios) {
+        for (Monetario monetario : listPossiveisMonetarios) {
             long count = lista.stream()
-                              .filter(f -> f.getValorMonetario().equals(monetario.getValorMonetario()) 
-                                        && f.getTipoMonetario().equals(monetario.getTipoMonetario()))
+                              .filter(m -> m.getTipoMonetario().equals(monetario.getTipoMonetario())
+                                        && m.getValorMonetario().equals(monetario.getValorMonetario()))
                               .count();
-            if (tipoMonetario != monetario.getTipoMonetario()) {
-                tipoMonetario = monetario.getTipoMonetario();
-                sb.append(tipoMonetario.toString().toUpperCase() + "S:\n");
+            if (tipoMonetarioAtualDoLoop != monetario.getTipoMonetario()) {
+                tipoMonetarioAtualDoLoop = monetario.getTipoMonetario();
+                sb.append(tipoMonetarioAtualDoLoop.toString().toUpperCase() + "S:\n");
             }
-            sb.append(count + "\t" + tipoMonetario.toString().toLowerCase() + "(s) de R$ " + monetario.getValorMonetario()+"\n");
+            sb.append(count + "\t" + tipoMonetarioAtualDoLoop.toString().toLowerCase() + "(s) de R$ " + monetario.getValorMonetario()+"\n");
         }
         System.out.println(sb);
-        return sb.toString();
+        return sb.toString(); // retorno String adicionado para Test
     }
     
 }

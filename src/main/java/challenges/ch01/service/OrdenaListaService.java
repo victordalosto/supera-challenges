@@ -7,7 +7,7 @@ import java.util.List;
 public class OrdenaListaService {
 
     
-    public List<Integer> getListOrdenadaEmConjuntoDeParesEDeCrescimento(List<Integer> listaComNumeros) {
+    public List<Integer> getListaOrdenadaEmConjuntoDeParesEDeCrescimento(List<Integer> listaComNumeros) {
         List<Integer> numerosPares = new ArrayList<>();
         List<Integer> numerosImpares = new ArrayList<>();
         for (Integer numero : listaComNumeros) {

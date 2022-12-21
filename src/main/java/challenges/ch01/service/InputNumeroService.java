@@ -38,7 +38,7 @@ public class InputNumeroService {
                 throw new NoSuchElementException();
             return numeroDigitado;
         } catch (NoSuchElementException e) {
-            System.out.println(" #Valor digitado Invalido! Valor deve ser um numero inteiro positivo N (1 < N <= 10^5)");
+            System.out.println(" #Valor digitado Invalido! Valor deve ser um numero inteiro positivo N (1 < N <= 10^5).");
             scanner.nextLine();
             return getNumeroDigitadoValido();
         } 
@@ -47,13 +47,13 @@ public class InputNumeroService {
 
 
     private List<Integer> getListaComNumerosDigitados(Integer quantidadeDeInputs) {
-        List<Integer> listaComNumerosInteirosNaoNegativos = new ArrayList<>(quantidadeDeInputs);
+        List<Integer> lista = new ArrayList<>(quantidadeDeInputs);
         for (int loopAtual = 1 ; loopAtual <=quantidadeDeInputs; loopAtual++) {
             System.out.println("("+loopAtual+"/"+quantidadeDeInputs+") Digite um numero: ");
             Integer numeroDigitado = getNumeroDigitadoValido();
-            listaComNumerosInteirosNaoNegativos.add(numeroDigitado);
+            lista.add(numeroDigitado);
         }
-        return listaComNumerosInteirosNaoNegativos;
+        return lista;
     } 
     
 

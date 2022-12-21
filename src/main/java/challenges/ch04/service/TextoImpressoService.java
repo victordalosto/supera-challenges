@@ -18,17 +18,10 @@ public class TextoImpressoService {
 
 
 
-    public String printaListaTexto(List<String> listString) {
-        listString.forEach(s -> System.out.println(s));
-        return listString.stream().collect(Collectors.joining(", "));
-    }
-
-
-
     private String concertaPrimeiraMetadeDoTexto(String text) {
-        int size = text.length()/2;
-        StringBuffer sb = new StringBuffer(size);
-        for (int i=size-1; i>=0; i--)
+        int metadeDoTamanhoDoTexto = text.length()/2;
+        StringBuffer sb = new StringBuffer(metadeDoTamanhoDoTexto);
+        for (int i=metadeDoTamanhoDoTexto-1; i>=0; i--)
             sb.append(text.charAt(i));
         return sb.toString();
     }
@@ -36,11 +29,19 @@ public class TextoImpressoService {
 
 
     private String concertaSegundaMetadeDoTexto(String text) {
-        int size = text.length()/2;
-        StringBuffer sb = new StringBuffer(size);
-        for (int i=size*2-1; i>=size; i--)
+        int tamanhoDoTexto = text.length();
+        int metadeDoTamanhoDoTexto = tamanhoDoTexto/2;
+        StringBuffer sb = new StringBuffer(metadeDoTamanhoDoTexto);
+        for (int i=tamanhoDoTexto-1; i>=metadeDoTamanhoDoTexto; i--)
             sb.append(text.charAt(i));
         return sb.toString();
         
+    }
+
+
+
+    public String printaListaTexto(List<String> listString) {
+        listString.forEach(s -> System.out.println(s));
+        return listString.stream().collect(Collectors.joining(", ")); // retorno acrescentado para Test
     }
 }

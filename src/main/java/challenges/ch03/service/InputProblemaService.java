@@ -14,30 +14,32 @@ public class InputProblemaService {
         scanner = new Scanner(System.in);
     }
 
-    // Construtor feito para test
     public InputProblemaService(Scanner scanner) {
         this.scanner = scanner;
     }
 
     
 
-    public ModeloProblema getModeloDigitado() {
-        System.out.println("Digite o tamanho do array desejado: ");
+    public ModeloProblema getModeloProblemaDigitado() {
+        System.out.println("Digite o tamanho (n) do array desejado: ");
         int tamanhoArr = getInteiroDigitado();
-        System.out.println("Digite o valor alvo para encontrar pares: ");
+        System.out.println("Digite o valor alvo (k) para encontrar os pares: ");
         int valorAlvo = getInteiroDigitado();
-        System.out.println("Digite os numeros que serao colocados no Array para a busca: ");
+        System.out.println("Digite os numeros que serao acrescentados no Array para a busca: ");
         int [] array = getArrayInteirosDigitado(tamanhoArr);
-        return ModeloProblema.builder().valorAlvo(valorAlvo).arr(array).build();
+        return ModeloProblema.builder().valorAlvo(valorAlvo).array(array).build();
     }
 
 
 
     private Integer getInteiroDigitado() {
         try {
-            return scanner.nextInt();
+            int inteiroDigitado = scanner.nextInt();
+            if (inteiroDigitado <=0) // Condicional nova acrescentada nao especificada
+                throw new NoSuchElementException();
+            return inteiroDigitado;
         } catch (NoSuchElementException e) {
-            System.out.println(" #Valor inteiro Invalido! Valor deve ser um numero inteiro");
+            System.out.println(" #Valor inteiro Invalido! Valor deve ser um numero inteiro.");
             scanner.nextLine();
             return getInteiroDigitado();
         } 

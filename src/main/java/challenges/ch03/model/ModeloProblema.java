@@ -6,15 +6,15 @@ import lombok.Data;
 
 @Data
 @Builder
-public class ModeloProblema {
+public class ModeloProblema     {
 
     private int valorAlvo;
-    private int[] arr;
+    private int[] array;
 
     
 
-    public int getQuantidadePares(NumeroDeParesService numeroDeParesService) {
-        return numeroDeParesService.getQuantidade(this);
+    public int getQuantidadeDePares(NumeroDeParesService numeroDeParesService) {
+        return numeroDeParesService.getQuantidadeDeParesNoArrayDoModelo(this);
     }
     
 }
