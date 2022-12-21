@@ -23,15 +23,15 @@ public class InputNumeroService {
 
     public List<Integer> getListaComNumerosInteirosNaoNegativosDigitados() {
         System.out.println("Digite a quantidade de numeros que serao inseridos: ");
-        int quantidadeDeInputs = getNumeroDigitadoValido(scanner);
+        int quantidadeDeInputs = getNumeroDigitadoValido();
         System.out.println("Digite os numeros que serao colocados para ordenacao: ");
-        List<Integer> listaComNumerosInteirosNaoNegativos = getListaComNumerosDigitados(quantidadeDeInputs, scanner);
+        List<Integer> listaComNumerosInteirosNaoNegativos = getListaComNumerosDigitados(quantidadeDeInputs);
         return Collections.unmodifiableList(listaComNumerosInteirosNaoNegativos);
     }
 
 
 
-    private Integer getNumeroDigitadoValido(Scanner scanner) {
+    private Integer getNumeroDigitadoValido() {
         try {
             Integer numeroDigitado = scanner.nextInt();
             if (!ehUmNumeroPositivoValido(numeroDigitado))
@@ -40,17 +40,17 @@ public class InputNumeroService {
         } catch (NoSuchElementException e) {
             System.out.println(" #Valor digitado Invalido! Valor deve ser um numero inteiro positivo N (1 < N <= 10^5)");
             scanner.nextLine();
-            return getNumeroDigitadoValido(scanner);
+            return getNumeroDigitadoValido();
         } 
     }
 
 
 
-    private List<Integer> getListaComNumerosDigitados(Integer quantidadeDeInputs, Scanner scanner) {
+    private List<Integer> getListaComNumerosDigitados(Integer quantidadeDeInputs) {
         List<Integer> listaComNumerosInteirosNaoNegativos = new ArrayList<>(quantidadeDeInputs);
         for (int loopAtual = 1 ; loopAtual <=quantidadeDeInputs; loopAtual++) {
             System.out.println("("+loopAtual+"/"+quantidadeDeInputs+") Digite um numero: ");
-            Integer numeroDigitado = getNumeroDigitadoValido(scanner);
+            Integer numeroDigitado = getNumeroDigitadoValido();
             listaComNumerosInteirosNaoNegativos.add(numeroDigitado);
         }
         return listaComNumerosInteirosNaoNegativos;
